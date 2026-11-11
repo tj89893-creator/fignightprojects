@@ -158,7 +158,7 @@ body.dn #cr{width:22px;height:22px}
     <div class="feat rv">
       <div class="gw"><img src="OptiF1gnight_animacion_16x9.gif" alt="Animación de OptiF1gnight" decoding="async" onerror="this.style.display='none'"></div>
       <div>
-        <span class="badge">⭐ DESTACADO · v2.3.0</span>
+        <span class="badge">⭐ DESTACADO · v2.4.0</span>
         <h2>OptiF1gnight</h2>
         <p class="d">App de optimización con +200 tweaks.</p>
         <div class="big"><b id="tw">+200</b><span>tweaks</span></div>
@@ -233,7 +233,7 @@ body.dn #cr{width:22px;height:22px}
     <p class="sub rv"></p>
     <div class="rv">
       <details><summary>¿Cómo instalo una app por cmd?</summary><p>Abrí cmd, tocá Copiar comando en la tarjeta de la app, pegalo con clic derecho y apretá Enter. Se descarga y se abre sola.</p></details>
-      <details><summary>¿Necesito instalar algo?</summary><p>No. Las apps son portables: se abren directo desde el archivo .exe, sin instalación.</p></details>
+      <details><summary>¿Necesito instalar algo?</summary><p>Depende. La mayoría de las apps son portables y se abren directo desde el archivo .exe. Desde la v2.4.0, OptiF1gnight ya no es portable: se instala con su instalador.</p></details>
       <details><summary>Windows o mi antivirus me avisa al abrirla, ¿por qué?</summary><p>Las apps no están firmadas digitalmente, por eso SmartScreen o el antivirus pueden mostrar un aviso. Si confiás en la app, tocá Más información y después Ejecutar de todas formas.</p></details>
       <details><summary>¿Cómo pido una app o reporto un problema?</summary><p>Entrá al Discord de la comunidad y escribí ahí tu sugerencia o el error que te aparece.</p></details>
     </div>
@@ -525,6 +525,20 @@ $("rdel").onclick = function(){ if (!myRev || !confirm("¿Borrar tu reseña?")) 
    Usa **texto** para poner negrita.
    ============================================================ */
 var NEWS = [
+  {
+    version: "v2.4.0",
+    title: "🚀 Actualización de Utilidades: OptiF1gnight (v2.4.0)",
+    intro: "¡Hola a todos! Llega una nueva versión de OptiF1gnight con una herramienta pensada para tu audio y una forma mucho más cómoda de instalar la app:",
+    head: "✨ ¿Qué hay de nuevo?",
+    items: [
+      { b: "Nueva incorporación: F1sound:", t: "Llega **F1sound**, la nueva herramienta de audio de OptiF1gnight, pensada para sonar mejor cuando juegas, haces stream o hablas por Discord:",
+        sub: [
+          "🎙️ **Mejora de calidad del micrófono:** Para que tu voz se escuche mejor.",
+          "🎭 **Moduladores de voz:** Para cambiar y personalizar tu voz con distintos efectos."
+        ] },
+      { b: "Ahora con Installer:", t: "OptiF1gnight **deja de ser portable**. Desde esta versión se instala como una aplicación de Windows, con un asistente de instalación guiado, en **español e inglés**." }
+    ]
+  },
   {
     version: "v2.3.0",
     title: "🚀 Actualización de Utilidades: OptiF1gnight (v2.3.0)",
