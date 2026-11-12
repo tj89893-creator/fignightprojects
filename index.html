@@ -301,6 +301,14 @@ var PROJECTS = [
     command: 'curl -L -o "%TEMP%\\Descargador.exe" https://github.com/tj89893-creator/downloadervid/raw/main/Descargador.exe && start "" "%TEMP%\\Descargador.exe"',
     download: "https://github.com/tj89893-creator/downloadervid/raw/main/Descargador.exe",
     github: "https://github.com/tj89893-creator/downloadervid"
+  },
+  {
+    name: "TurboDL",
+    desc: "Descargas más rápidas, sin vueltas. TurboDL divide cada archivo en varias partes y las descarga al mismo tiempo, así aprovecha al máximo la velocidad de cualquier tipo de conexión. Viene con su propia extensión incluida dentro de la carpeta.",
+    tags: ["Windows", "Descargas", "Más velocidad", "Extensión"],
+    command: 'mkdir "%USERPROFILE%\\TurboDL" & curl -L -o "%TEMP%\\TurboDL.zip" https://github.com/tj89893-creator/turbodl/releases/download/v1.0/TurboDL.zip && tar -xf "%TEMP%\\TurboDL.zip" -C "%USERPROFILE%\\TurboDL" && start "" "%USERPROFILE%\\TurboDL"',
+    download: "https://github.com/tj89893-creator/turbodl/releases/download/v1.0/TurboDL.zip",
+    github: "https://github.com/tj89893-creator/turbodl"
   }
 ];
 
