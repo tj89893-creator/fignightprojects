@@ -128,6 +128,10 @@ body.dn #cr{width:22px;height:22px}
 .nw ul{margin:4px 0 0 20px;display:grid;gap:12px;line-height:1.55;color:var(--dim)}
 .nw li::marker{color:var(--pink)}
 .nw strong{color:var(--txt)}
+.tgl{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px}
+.tgl .arr{display:inline-block;font-size:18px;line-height:1;transition:transform .25s}
+.tgl.on .arr{transform:rotate(180deg)}
+.olds[hidden]{display:none}
 @media(max-width:720px){.links a:not(.btn){display:none}.dc{grid-template-columns:1fr;padding:22px}.feat{grid-template-columns:1fr;padding:18px}}
 @media(prefers-reduced-motion:reduce){.feat::after{animation:none}}
 @media(prefers-reduced-motion:reduce){.aur,.hero h1{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -158,7 +162,7 @@ body.dn #cr{width:22px;height:22px}
     <div class="feat rv">
       <div class="gw"><img src="OptiF1gnight_animacion_16x9.gif" alt="Animación de OptiF1gnight" decoding="async" onerror="this.style.display='none'"></div>
       <div>
-        <span class="badge">⭐ DESTACADO · v2.5.0</span>
+        <span class="badge">⭐ DESTACADO · v2.6.0</span>
         <h2>OptiF1gnight</h2>
         <p class="d">App de optimización con +200 tweaks.</p>
         <div class="big"><b id="tw">+200</b><span>tweaks</span></div>
@@ -534,6 +538,17 @@ $("rdel").onclick = function(){ if (!myRev || !confirm("¿Borrar tu reseña?")) 
    ============================================================ */
 var NEWS = [
   {
+    version: "v2.6.0",
+    title: "🚀 Actualización de Utilidades: OptiF1gnight (v2.6.0)",
+    intro: "¡Hola a todos! La v2.6.0 de OptiF1gnight llega para que la app sea realmente tuya y para que nunca pierdas tu configuración:",
+    head: "✨ ¿Qué hay de nuevo?",
+    items: [
+      { b: "Nuevo sistema de cuentas:", t: "Ahora podés crear tu cuenta y **personalizar tu perfil** para darle tu propio estilo a la app." },
+      { b: "Configuraciones en la nube:", t: "☁️ Guardá las configuraciones de OptiF1gnight **en la nube** y tenelas siempre a salvo." },
+      { b: "Nuevo apartado de Ranking:", t: "🏆 Sumamos la nueva sección de **Ranking** dentro de la app." }
+    ]
+  },
+  {
     version: "v2.5.0",
     title: "🚀 Actualización de Utilidades: OptiF1gnight (v2.5.0)",
     intro: "¡Hola a todos! Llega la v2.5.0 de OptiF1gnight con una interfaz completamente nueva, más clara y moderna, para que tengas el estado de tu PC siempre a la vista:",
@@ -582,9 +597,9 @@ var NEWS = [
 function rich(parent, str){
   str.split("**").forEach(function(part, i){ if (!part) return; parent.appendChild(i % 2 ? el("strong", "", part) : document.createTextNode(part)); });
 }
-var newsBox = document.getElementById("news");
+var newsBox = document.getElementById("news"), oldBox = null;
 NEWS.forEach(function(n, idx){
-  var c = el("article", "card nw rv"), vt = el("div", "vt");
+  var c = el("article", idx === 0 ? "card nw rv" : "card nw"), vt = el("div", "vt");
   vt.appendChild(el("h3", "", n.title)); if (idx === 0) vt.appendChild(el("span", "chip", "NUEVO"));
   c.appendChild(vt);
   if (n.intro) c.appendChild(el("p", "", n.intro));
@@ -595,7 +610,21 @@ NEWS.forEach(function(n, idx){
     if (it.sub) { var u2 = el("ul", ""); it.sub.forEach(function(x){ var l2 = el("li", ""); rich(l2, x); u2.appendChild(l2); }); li.appendChild(u2); }
     ul.appendChild(li);
   });
-  c.appendChild(ul); newsBox.appendChild(c);
+  c.appendChild(ul);
+  if (idx === 0) { newsBox.appendChild(c); return; }
+  if (!oldBox) {
+    var tg = el("button", "btn ghost tgl"); tg.type = "button"; tg.setAttribute("aria-expanded", "false");
+    var tt = el("span", "", "Ver novedades anteriores (" + (NEWS.length - 1) + ")"), ar = el("span", "arr", "▾");
+    tg.appendChild(tt); tg.appendChild(ar);
+    oldBox = el("div", "olds"); oldBox.hidden = true;
+    tg.onclick = function(){
+      var open = oldBox.hidden; oldBox.hidden = !open;
+      tg.classList.toggle("on", open); tg.setAttribute("aria-expanded", open ? "true" : "false");
+      tt.textContent = open ? "Ocultar novedades anteriores" : "Ver novedades anteriores (" + (NEWS.length - 1) + ")";
+    };
+    newsBox.appendChild(tg); newsBox.appendChild(oldBox);
+  }
+  oldBox.appendChild(c);
 });
 
 /* ---- aparecer al hacer scroll ---- */
